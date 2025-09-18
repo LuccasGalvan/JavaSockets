@@ -77,7 +77,7 @@ public class UDPServer {
                 socket.receive(packet); // Aguarda resposta (bloqueia até chegar ou até expirar timeout)
 
                 // Extrai o nome do ficheiro solicitado
-                requestedFileName = new String(packet.getData()).trim();
+                requestedFileName = new String(packet.getData(), 0, packet.getLength()).trim();
 
                 System.out.println("Recebido pedido para \"" + requestedFileName + "\" de " + packet.getAddress().getHostAddress() + ":" + packet.getPort());
 
